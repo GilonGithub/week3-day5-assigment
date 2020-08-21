@@ -148,34 +148,50 @@ let library = {
     // containing a randomly generated id, a name, an artist, and an album 
     // console.log to confirm that the song has been added.
 
-    let id = this.generateUid();
+    let songID = this.generateUid();
 
-    console.log(id);
+    console.log(songID);
 
-    library['songs'][id] = {
+    library['songs'][songID] = {
 
-      id: id,
+      id: songID,
       name: name,
       artist: artist,
       album: album
-    }
+    };
 
-    console.log(this['songs'][id]);
+    console.log(this['songs'][songID]);
   },
 
   addSongToPlaylist: function(songID, playlistID) {
     // given a songID, add that song to the playlist for the given playlistID
     //console.log the playlist to make sure the song was added.
+
+    library['playlists'][playlistID]['tracks'].push(songID);
+
+    console.log(library['playlists'][playlistID]);
+    
+
   },
 
   addPlaylist: function(name, arrOfSongs) {
     // add a new playlist to the playlist object. it will be
     // containing a randomly generated id, a name, and an array of songs to be added to the playlist 
     // console.log to confirm that the playlist has been added.
+
+    let playlistID = this.generateUid();
+
+    library['playlists'][playlistID] = {
+
+      id: playlistID,
+      name: name,
+      tracks: arrOfSongs
+    }
+
+    console.log(library['playlists'][playlistID]);
+    //console.log(library['playlists'][playlistID]['tracks']);
+
   },
-
-
-
 
 
 }
@@ -184,9 +200,7 @@ let library = {
 
 //console.log(Object.keys(library.playlists));
 
-//console.log(Object.keys(library.songs).length);
-
-// library.addSongToPlaylist('s02', 'p02');
+//library.addSongToPlaylist('s01', 'p02');
 
 // console.log(library.songs);
 
@@ -198,6 +212,12 @@ let library = {
 
 //library.printAllPlaylistNames();
 
-//library.printPlaylistSongs("p03");
+//library.printPlaylistSongs("p01");
 
-library.addSong("New Song", "New Artist", "New Album");
+//library.addSong("New Song", "New Artist", "New Album");
+
+//library.addSongToPlaylist("s02", "p01");
+
+//library.addPlaylist("New Playlist", ["s01","s02","s03"]);
+
+
